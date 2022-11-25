@@ -15,3 +15,9 @@ after_success:
   - docker build -t barisozcanli/multi-nginx ./nginx
   - docker build -t barisozcanli/multi-server ./server
   - docker build -t barisozcanli/multi-worker ./worker
+  ]#Login to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push barisozcanli/multi-client
+  - docker push barisozcanli/multi-nginx
+  - docker push barisozcanli/multi-server
+  - docker push barisozcanli/multi-worker
